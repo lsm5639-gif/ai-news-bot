@@ -7,7 +7,7 @@ import google.generativeai as genai
 
 # 1. Gemini API 설정
 genai.configure(api_key=os.environ["GEMINI_API_KEY"])
-model = genai.GenerativeModel('gemini-1.5-flash')
+model = genai.GenerativeModel('gemini-2.5-flash')
 
 # 2. RSS 뉴스 수집 (Reuters, Economist, WSJ 등 공개 RSS)
 rss_urls = [
