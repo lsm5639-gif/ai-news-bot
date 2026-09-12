@@ -9,12 +9,27 @@ import google.generativeai as genai
 genai.configure(api_key=os.environ["GEMINI_API_KEY"])
 model = genai.GenerativeModel('gemini-3.6-flash')
 
-# 2. RSS 뉴스 수집 (Reuters, Economist, WSJ 등 공개 RSS)
-rss_urls = [
-    "https://www.reutersagency.com/feed/?best-topics=business-finance&post_type=best",
-    "https://feeds.content.dowjones.io/public/rss/mw_topstories",
-    "https://www.economist.com/the-world-this-week/rss.xml"
-]
+# 2. RSS 뉴스 수집 (다양한 관점의 글로벌 출처 균형 수집)
+    rss_urls = [
+        # 객관성 및 글로벌 표준 매체
+        "https://www.reutersagency.com/feed/?best-topics=business-finance&post_type=best",
+        "https://www.reutersagency.com/feed/?best-topics=world&post_type=best",
+        "https://www.ft.com/?format=rss",
+        "https://www.economist.com/finance-and-economics/rss.xml",
+        "https://www.economist.com/the-world-this-week/rss.xml",
+        
+        # 시장 친화 및 보수적 관점 매체
+        "https://feeds.content.dowjones.io/public/rss/mw_topstories",
+        "https://feeds.content.dowjones.io/public/rss/wsj_world_news",
+        "https://www.nationalreview.com/feed/",
+        "https://www.washingtontimes.com/rss/headlines/news/business/",
+        
+        # 사회·정책 분석 및 심층 관점 매체
+        "http://feeds.bbci.co.uk/news/business/rss.xml",
+        "http://feeds.bbci.co.uk/news/world/rss.xml",
+        "https://www.theguardian.com/business/rss",
+        "https://www.theguardian.com/world/rss"
+    ]
 
 raw_news = []
 for url in rss_urls:
